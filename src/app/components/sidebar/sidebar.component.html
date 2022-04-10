@@ -18,7 +18,7 @@
       class="md:block text-left md:pb-2 text-blueGray-600 mr-0 inline-block whitespace-nowrap text-sm uppercase font-bold p-4 px-0"
     >
       <span class="block sm:hidden"> Tailwind Angular </span>
-      <span class="hidden sm:block"> Notus Angular </span>
+      <span class="hidden sm:block"> MixSale Project </span>
     </a>
     <!-- User -->
     <ul class="md:hidden items-center flex flex-wrap list-none">
@@ -75,7 +75,7 @@
       <h6
         class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
       >
-        Admin Layout Pages
+        Menu
       </h6>
       <!-- Navigation -->
 
@@ -98,11 +98,11 @@
                 adminDashboard.isActive ? 'opacity-75' : 'text-blueGray-300'
               "
             ></i>
-            Dashboard
+            หน้าจัดการ (MixSale)
           </a>
         </li>
 
-        <li class="items-center">
+        <li class="items-center hidden">
           <a
             [routerLink]="['/admin/settings']"
             class="text-xs uppercase py-3 font-bold block"
@@ -124,7 +124,7 @@
           </a>
         </li>
 
-        <li class="items-center">
+        <li class="items-center hidden">
           <a
             [routerLink]="['/admin/tables']"
             class="text-xs uppercase py-3 font-bold block"
@@ -146,7 +146,7 @@
           </a>
         </li>
 
-        <li class="items-center">
+        <li class="items-center hidden">
           <a
             [routerLink]="['/admin/maps']"
             class="text-xs uppercase py-3 font-bold block"
@@ -170,16 +170,16 @@
       </ul>
 
       <!-- Divider -->
-      <hr class="my-4 md:min-w-full" />
+      <hr class="my-4 md:min-w-full hidden" />
       <!-- Heading -->
       <h6
-        class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+        class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline hidden"
       >
         Auth Layout Pages
       </h6>
       <!-- Navigation -->
 
-      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4 hidden">
         <li class="items-center">
           <a
             [routerLink]="['/auth/login']"
@@ -202,16 +202,16 @@
       </ul>
 
       <!-- Divider -->
-      <hr class="my-4 md:min-w-full" />
+      <hr class="my-4 md:min-w-full hidden" />
       <!-- Heading -->
       <h6
-        class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+        class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline hidden"
       >
         No Layout Pages
       </h6>
       <!-- Navigation -->
 
-      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4 hidden">
         <li class="items-center">
           <a
             [routerLink]="['/landing']"
@@ -234,15 +234,15 @@
       </ul>
 
       <!-- Divider -->
-      <hr class="my-4 md:min-w-full" />
+      <hr class="my-4 md:min-w-full hidden" />
       <!-- Heading -->
       <h6
-        class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
+        class="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline hidden"
       >
         Documentation
       </h6>
       <!-- Navigation -->
-      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4">
+      <ul class="md:flex-col md:min-w-full flex flex-col list-none md:mb-4 hidden">
         <li class="inline-flex">
           <a
             href="https://www.creative-tim.com/learning-lab/tailwind/angular/colors/notus"

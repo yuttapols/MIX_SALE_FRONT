@@ -4,6 +4,9 @@
 
 export const environment = {
   production: false,
+  producttionUrl: false,
+  eventMode: 'LOCAL',
+  apiUrl: 'http://localhost:9081/MAX-SALE/',
 };
 
 /*

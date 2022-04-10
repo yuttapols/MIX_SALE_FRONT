@@ -1,0 +1,6 @@
+export class ServiceCall {
+
+    constructor(
+        
+    ){}
+}
