@@ -20,9 +20,7 @@ export class LoginComponent implements OnInit {
   ): void {
     //this.doSession();
   }
-
-
-
+  
   login(){
     var rootUrl = service.login + "?username=" + this.user.username + "&password=" + this.user.password;
     this.utilService.get(rootUrl).subscribe(data=>{
