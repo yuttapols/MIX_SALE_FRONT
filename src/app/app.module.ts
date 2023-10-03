@@ -1,95 +1,59 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
 
-import { AppRoutingModule } from "./app-routing.module";
-import { AppComponent } from "./app.component";
-
-// layouts
-import { AdminComponent } from "./layouts/admin/admin.component";
-import { AuthComponent } from "./layouts/auth/auth.component";
-
-// admin views
-import { DashboardComponent } from "./views/admin/dashboard/dashboard.component";
-import { MapsComponent } from "./views/admin/maps/maps.component";
-import { SettingsComponent } from "./views/admin/settings/settings.component";
-import { TablesComponent } from "./views/admin/tables/tables.component";
-
-// auth views
-import { LoginComponent } from "./views/auth/login/login.component";
-import { RegisterComponent } from "./views/auth/register/register.component";
-
-// no layouts views
-import { IndexComponent } from "./views/index/index.component";
-import { LandingComponent } from "./views/landing/landing.component";
-import { ProfileComponent } from "./views/profile/profile.component";
-
-// components for views and layouts
-
-import { AdminNavbarComponent } from "./components/navbars/admin-navbar/admin-navbar.component";
-import { AuthNavbarComponent } from "./components/navbars/auth-navbar/auth-navbar.component";
-import { CardBarChartComponent } from "./components/cards/card-bar-chart/card-bar-chart.component";
-import { CardLineChartComponent } from "./components/cards/card-line-chart/card-line-chart.component";
-import { CardPageVisitsComponent } from "./components/cards/card-page-visits/card-page-visits.component";
-import { CardProfileComponent } from "./components/cards/card-profile/card-profile.component";
-import { CardSettingsComponent } from "./components/cards/card-settings/card-settings.component";
-import { CardSocialTrafficComponent } from "./components/cards/card-social-traffic/card-social-traffic.component";
-import { CardStatsComponent } from "./components/cards/card-stats/card-stats.component";
-import { CardTableComponent } from "./components/cards/card-table/card-table.component";
-import { FooterAdminComponent } from "./components/footers/footer-admin/footer-admin.component";
-import { FooterComponent } from "./components/footers/footer/footer.component";
-import { FooterSmallComponent } from "./components/footers/footer-small/footer-small.component";
-import { HeaderStatsComponent } from "./components/headers/header-stats/header-stats.component";
-import { IndexNavbarComponent } from "./components/navbars/index-navbar/index-navbar.component";
-import { MapExampleComponent } from "./components/maps/map-example/map-example.component";
-import { IndexDropdownComponent } from "./components/dropdowns/index-dropdown/index-dropdown.component";
-import { TableDropdownComponent } from "./components/dropdowns/table-dropdown/table-dropdown.component";
-import { PagesDropdownComponent } from "./components/dropdowns/pages-dropdown/pages-dropdown.component";
-import { NotificationDropdownComponent } from "./components/dropdowns/notification-dropdown/notification-dropdown.component";
-import { SidebarComponent } from "./components/sidebar/sidebar.component";
-import { UserDropdownComponent } from "./components/dropdowns/user-dropdown/user-dropdown.component";
-import { UtilServiceService } from "./core/util/util-service.service";
-import { HttpClientModule } from "@angular/common/http";
-import { FormsModule } from "@angular/forms";
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { TestComponent } from './test/test.component';
+import { LoginComponent } from './login/login.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { RegComponent } from './reg/reg.component';
+import { CarService } from './services/car.service';
+import {HttpClientModule} from '@angular/common/http';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { DeptListComponent } from './test/dept-list/dept-list.component';
+import { DeptDetailComponent } from './test/dept-detail/dept-detail.component';
+import { EmpComponent } from './test/emp/emp.component'
+import { RegService } from './services/reg.service';
+import { UserService } from './services/user.service';
+import { AuthService } from './services/auth.service';
+import { SuccessComponent } from './login/success/success.component';
+import { AuthGuard } from './login/auth.guard';
+import { HomeComponent } from './home/home.component';
+import { ProfileComponent } from './login/profile/profile.component';
+import { OverviewComponent } from './test/dept-detail/overview/overview.component';
+import { ContactsComponent } from './test/dept-detail/contacts/contacts.component';
+import {DisableDragDropDirective} from './directives/disable-drag-drop.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent,
-    CardBarChartComponent,
-    CardLineChartComponent,
-    IndexDropdownComponent,
-    PagesDropdownComponent,
-    TableDropdownComponent,
-    NotificationDropdownComponent,
-    UserDropdownComponent,
-    SidebarComponent,
-    FooterComponent,
-    FooterSmallComponent,
-    FooterAdminComponent,
-    CardPageVisitsComponent,
-    CardProfileComponent,
-    CardSettingsComponent,
-    CardSocialTrafficComponent,
-    CardStatsComponent,
-    CardTableComponent,
-    HeaderStatsComponent,
-    MapExampleComponent,
-    AuthNavbarComponent,
-    AdminNavbarComponent,
-    IndexNavbarComponent,
-    AdminComponent,
-    AuthComponent,
-    MapsComponent,
-    SettingsComponent,
-    TablesComponent,
+    TestComponent,
     LoginComponent,
-    RegisterComponent,
-    IndexComponent,
-    LandingComponent,
+    RegComponent,
+    PageNotFoundComponent,
+    DeptListComponent,
+    DeptDetailComponent,
+    EmpComponent,
+    SuccessComponent,
+    HomeComponent,
     ProfileComponent,
+    OverviewComponent,
+    ContactsComponent,
+    DisableDragDropDirective
   ],
-  imports: [BrowserModule, AppRoutingModule,HttpClientModule,FormsModule],
-  providers: [UtilServiceService],
-  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule
+  ],
+  providers: [
+    CarService,
+    RegService,
+    UserService,
+    AuthService,
+    AuthGuard
+  ],
+  bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

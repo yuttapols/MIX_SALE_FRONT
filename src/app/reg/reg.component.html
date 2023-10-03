@@ -1,0 +1,136 @@
+<div class="container mb-4">
+    <h1>Registration Form</h1>
+    <hr>
+
+    <div class="row justify-content-center align-items-center">
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()" class="col-10">
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Name:</label>
+                <div class="col-sm-10">
+                    <input [class.is-invalid]="name.invalid && (name.touched || hasSubmitted)" formControlName="name" type="text" class="form-control" placeholder="Enter Name">
+                    <div *ngIf="name.invalid && (name.touched || hasSubmitted)">
+                        <small *ngIf="name.errors?.required" class="text-danger">Name is required</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Age:</label>
+                <div class="col-sm-10">
+                    <input [class.is-invalid]="age.invalid && (age.touched || hasSubmitted)" formControlName="age" type="text" class="form-control" placeholder="Enter Age">
+                    <div *ngIf="age.invalid && (age.touched || hasSubmitted)">
+                        <small *ngIf="age.errors?.maxlength" class="text-danger">Age should not be more than 2 digits </small>
+                        <small *ngIf="age.errors?.pattern" class="text-danger">Kindly enter numbers only </small>
+                        <small *ngIf="age.errors?.required" class="text-danger">Age is required</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Company:</label>
+                <div class="col-sm-10">
+                    <select formControlName="company" class="form-control">
+                        <option value="" selected disabled>Please select Company</option>
+                        <option *ngFor="let i of companies" [value]="i">{{i}}</option>
+                    </select>
+                    <div *ngIf="company.invalid && (company.touched || hasSubmitted)">
+                        <small *ngIf="company.errors?.required" class="text-danger">Company is required</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Country:</label>
+                <div class="col-sm-10">
+                    <select formControlName="country" class="form-control">
+                        <option value="" selected disabled>Please select Country</option>
+                        <option *ngFor="let i of countries" [value]="i.country">{{i.country}}</option>
+                    </select>
+                    <div *ngIf="country.invalid && (country.touched || hasSubmitted) ">
+                        <small *ngIf="country.errors?.required" class="text-danger">Country is required</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Phone:</label>
+                <div class="col-sm-10">
+                    <input [class.is-invalid]="phone.invalid && (phone.touched || hasSubmitted)" formControlName="phone" type="tel" class="form-control" placeholder="Enter Phone number">
+                    <div *ngIf="phone.invalid && (phone.touched || hasSubmitted)">
+                        <small *ngIf="phone.errors?.minlength" class="text-danger">Phone number minimum length should be 10 digits</small>
+                        <small *ngIf="phone.errors?.maxlength" class="text-danger">Phone number maximum length should be 10 digits</small>
+                        <small *ngIf="phone.errors?.pattern" class="text-danger">Only Numbers allowed</small>
+                        <small *ngIf="phone.errors?.required" class="text-danger">Phone number is required</small>
+                    </div>
+                </div>
+            </div>
+
+            <fieldset class="form-group">
+                <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
+                    <div class="col-sm-10" id="gender">
+                        <div class="form-check">
+                            <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <label for="male" class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check">
+                            <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label for="female" class="form-check-label" for="female">Female</label>
+                        </div>
+                        <div class="form-check">
+                            <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="notToSay" value="Rather Not to Say">
+                            <label for="notToSay" class="form-check-label" for="notToSay">Rather Not to Say</label>
+                        </div>
+                        <div *ngIf="gender.invalid && (gender.touched || hasSubmitted)">
+                            <small *ngIf="gender.errors?.required" class="text-danger">Gender is required</small>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Username : </label>
+                <div class="col sm 10">
+                    <input [class.is-invalid]="userName.invalid && (userName.touched || hasSubmitted)" formControlName="userId" type="text" class="form-control" placeholder="Create a Username">
+                    <div *ngIf="userName.invalid && (userName.touched || hasSubmitted)">
+                        <small *ngIf="userName.errors?.required" class="text-danger">Username is required</small>
+                        <small *ngIf="userName.errors?.pattern" class="text-danger">There should not be any special character in Username</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Password : </label>
+                <div class="col-sm-10">
+                    <input [class.is-invalid]="password.invalid && (password.touched || hasSubmitted)" formControlName="pass" type="text" class="form-control" placeholder="Create a Password" id="password" autocomplete="off">
+                    <div *ngIf="password.invalid && (password.touched || hasSubmitted)">
+                        <small *ngIf="password.errors?.required" class="text-danger">Password is required</small>
+                        <small *ngIf="password.errors?.minlength" class="text-danger">Password should be minimum 6 characters</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label"> Confirm Password:</label>
+                <div class="col-sm-10">
+                    <input [class.is-invalid]="regForm.errors?.misMatch" formControlName="confirm" type="text" class="form-control" placeholder="Confirm your password" id="cpassword" autocomplete="off">
+                    <small *ngIf="regForm.errors?.misMatch" class="text-danger">Password did not match</small>
+                    <div *ngIf="confirm.invalid && (confirm.touched || hasSubmitted)">
+                        <small *ngIf="confirm.errors?.required" class="text-danger">Please confirm your password</small>
+                    </div>
+                </div>
+            </div>
+
+            <button routerLink="/login" type="button" class="btn btn-outline-info m-2">Already Registered? Back to Login</button>
+            <button type="submit" class="btn btn-success float-right m-2">Register</button>
+        </form>
+
+    </div>
+
+    <!--<div class="card border-info m-3 mb-4">
+        <div class="card-header text-center"><b>Your Entered Values Here</b></div>
+        <div class="card-body text-info"> {{ regForm.value | json }} </div>
+    </div>-->
+
+</div>
