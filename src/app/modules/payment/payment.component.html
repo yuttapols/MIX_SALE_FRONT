@@ -1,0 +1,73 @@
+<div class="container-fluid h-custom" style="margin-top: -50px">
+    <div class="row d-flex justify-content-center align-items-center">
+        <!-- <div class="col-md-9 col-lg-6 col-xl-5" >
+                <img src="https://www.toyotabuzz.com/img/upload/car/large/20220801153719_934315410.png"
+                    class="img-fluid" alt="Sample image">
+            </div> -->
+        <div class="row d-flex  "
+            style="width: 75rem; height: 37rem; margin-top: 100px;background-color:  rgb(242, 242, 242);">
+
+            <div class="col-md-6" style="margin-top: 40px;">
+
+                <p style="text-align: center; font-size: 24px;">กรุณาชำระค่ามัดจำ</p>
+
+
+                <div class="nav-item dropdown" style="margin-top: 10px;" class="text-center">
+                    <button class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-success btn-md" type="button"
+                        style="width: 225px;">
+                        เลือกธนคารที่จะชำระเงิน
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 225px;">
+                        <li *ngFor="let item of paymentBank ;"><a class="dropdown-item"
+                                (click)="getBankById(item.bkId)">{{item.bankNmae}} </a></li>
+                    </ul>
+
+                </div>
+                <div style="height: 200px; margin-top:  30px;">
+                    <div class="form-group" *ngIf="null != bank" style="text-align: center">
+                        <div class="">
+                            <img [src]="bank.qrCode" style="width: 280px;" class="rounded" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6" style="margin-top: 40px;" *ngIf="null != bankId">
+
+                <p style="text-align: center; font-size: 24px;">กรุณาแนบสลิปการชำระค่ามัดจำ
+                </p>
+                <!-- ยืนยันการชำระเงิน -->
+                <div class="form-group row" style="margin-top: 10px;">
+
+                    <div class="text-center">
+                        <input class="btn btn-success btn-md" style="margin-right: 10px; width: 195px;"
+                            (click)="payment()" value="ยืนยันการชำระค่ามัดจำ">
+
+                    </div>
+
+                </div>
+
+                <div class="mb-3" style=" margin-top: 15px; margin-left: 50px;">
+                    <label for="formFile" class="form-label">กรุณาเลือกไฟล์</label>
+                    <input class=" form-control" type="file" (change)="onFileSelected($event)" style="width: 450px; ">
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-lg-3 col-form-label form-control-label text-center"></div>
+
+                    <div class="col-lg-7 col-form-label form-control-label "
+                        style="margin-left: 16px; line-height: 2.2;">
+                        <img [src]="imageBase64" style="width: 230px;" class="rounded" />
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<ng-template #customLoadingTemplate>
+</ng-template>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"></ngx-loading>

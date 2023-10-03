@@ -1,0 +1,155 @@
+<div class="row justify-content-center align-items-center" style="margin-top: 90px">
+    <div class="col-12 col-lg-9 col-xl-7">
+        <div class="card shadow-2-strong card-registration" style="border-radius: 15px;"
+            style="background-color: rgb(242, 242, 242);">
+            <div class="card-body p-2 p-md-3">
+                <h4 class="mb-4 pb-2 pb-md-0 mb-md-3" style="margin-left: 23px;">สมัครสมาชิก</h4>
+
+                <form class="px-md-4" role="form" [formGroup]="registerForm" (ngSubmit)=" onSubmit()">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <input type="text" id="validationDefault05" class="form-control" placeholder="กรอกชื่อ"
+                                    formControlName="fristName" required />
+                            </div>
+                            <div
+                                *ngIf="registerForm.controls['fristName'].invalid && (registerForm.controls['fristName'].dirty || registerForm.controls['fristName'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกชื่อ</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <input type="text" id="lastName" class="form-control" placeholder="กรอกนามสกุล"
+                                    formControlName="lastName" required />
+                            </div>
+                            <div
+                                *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกนามสกุล</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <input type="text" id="email" class="form-control" placeholder="กรอก E-mail"
+                                    formControlName="userEmail" required />
+                            </div>
+                            <div
+                                *ngIf="registerForm.controls['userEmail'].invalid && (registerForm.controls['userEmail'].dirty || registerForm.controls['userEmail'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอก E-mail</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <input type="text" id="phone" class="form-control" placeholder="กรอกเบอร์โทร"
+                                    formControlName="userPhone" required />
+                            </div>
+                            <div
+                                *ngIf="registerForm.controls['userPhone'].invalid && (registerForm.controls['userPhone'].dirty || registerForm.controls['userPhone'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกเบอร์โทร</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-outline mb-4">
+                            <div class="form-outline">
+                                <input type="text" id="address" class="form-control" placeholder="กรอกที่อยู่"
+                                    formControlName="userAddress" required />
+                            </div>
+                            <div
+                                *ngIf="registerForm.controls['userAddress'].invalid && (registerForm.controls['userAddress'].dirty || registerForm.controls['userAddress'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกที่อยู่</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <select class="form-control" formControlName="provincesId" (change)="onChangeProvinces()"
+                                required>
+                                <option value="" selected>จังหวัด</option>
+                                <option *ngFor="let item of provinces" value="{{item.id}}">{{item.nameTh}}
+                                </option>
+                            </select>
+                            <div
+                                *ngIf="registerForm.controls['provincesId'].invalid && (registerForm.controls['provincesId'].dirty || registerForm.controls['provincesId'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกจังหวัด</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <select class="form-control" formControlName="amphuresId" (change)="onChangeAmphures()"
+                                required>
+                                <option value="" selected>เขต/อำเภอ</option>
+                                <option *ngFor="let item of amphures" [ngValue]="item.id">{{item.nameTh}}
+                                </option>
+                            </select>
+                            <div
+                                *ngIf="registerForm.controls['amphuresId'].invalid && (registerForm.controls['amphuresId'].dirty || registerForm.controls['amphuresId'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกอำเภอ</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <select class="form-control" formControlName="tambonsId" (change)="onChangeTombons()"
+                                required>
+                                <option value="" selected>แขวง/ตำบล</option>
+                                <option *ngFor="let item of tambons" [ngValue]="item.id">{{item.nameTh}}
+                                </option>
+                            </select>
+                            <div
+                                *ngIf="registerForm.controls['tambonsId'].invalid && (registerForm.controls['tambonsId'].dirty || registerForm.controls['tambonsId'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกตำบล</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <input type="text" id="address" class="form-control" placeholder="รหัสไปรษณีย์"
+                                value="{{zipCode}}" readonly />
+                        </div>
+
+                    </div>
+
+                    <hr class="my-1">
+                    <div class="mt-2 pt-2">
+                        <h4 class="card-body p-2 p-md-3" class="mb-4 pb-2 pb-md-0 mb-md-3">ตั้งรหัสผ่าน</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <input type="password" id="password" class="form-control" placeholder="รหัสผ่าน"
+                                    formControlName="password" required />
+                            </div>
+                            <div
+                                *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched || isSubmit)">
+                                <p class="text-danger">กรูณากรอกรหัสผ่าน</p>
+                            </div>
+                            <div *ngIf="isPassword">
+                                <p class="text-danger">รหัสผ่านไม่ตรงกัน</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                                <input type="password" id="configpassword" class="form-control"
+                                    placeholder="ยืนยันรหัสผ่าน" formControlName="configpassword" required />
+                            </div>
+                            <div
+                                *ngIf="registerForm.controls['configpassword'].invalid && (registerForm.controls['configpassword'].dirty || registerForm.controls['configpassword'].touched || isSubmit)">
+                                <p class="text-danger">กรูณากรอกยืนยันรหัสผ่าน</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mt-1 pt-2" class="text-center">
+                            <div>
+                                <button class="btn btn-success">ยืนยันการสมัคร</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #customLoadingTemplate>
+</ng-template>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"></ngx-loading>

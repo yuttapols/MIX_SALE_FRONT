@@ -1,0 +1,152 @@
+<section>
+    <div class="col-md-7 offset-md-3">
+        <span class="anchor" id="formUserEdit"></span>
+
+        <!-- form user info -->
+        <div class="card card-outline-secondary " style="margin-top: 40px;margin-bottom: 10%;">
+            <div class="card-header" style="text-align: center;">
+                <h3 class="mb-0">จัดการข้อมูลรถยนต์</h3>
+            </div>
+            <div class="card-body">
+                <form class="form" role="form" [formGroup]="carForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label "
+                            style="line-height: 2.2;">ยี่ห้อรถยนต์</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" value="" formControlName="carBrand" required>
+                            <div
+                                *ngIf="carForm.controls['carBrand'].invalid && (carForm.controls['carBrand'].dirty || carForm.controls['carBrand'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกชื่อยี่ห้อ</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">ชื่อรุ่นรถยนต์</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" value="" formControlName="carModel" required>
+                            <div
+                                *ngIf="carForm.controls['carModel'].invalid && (carForm.controls['carModel'].dirty || carForm.controls['carModel'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกชื่อรุ่น</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label" style="line-height: 2.2;">ราคา</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" value="" formControlName="carPrice" required>
+                            <div
+                                *ngIf="carForm.controls['carPrice'].invalid && (carForm.controls['carPrice'].dirty || carForm.controls['carPrice'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกราคา</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">เกียร์</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" value="" formControlName="carGear" required>
+                            <div
+                                *ngIf="carForm.controls['carGear'].invalid && (carForm.controls['carGear'].dirty || carForm.controls['carGear'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกชื่อเกียร์</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">ระยะทาง</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" value="" formControlName="carMiles" required>
+                            <div
+                                *ngIf="carForm.controls['carMiles'].invalid && (carForm.controls['carMiles'].dirty || carForm.controls['carMiles'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกระยะทาง</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">น้ำมัน</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" value="" formControlName="carOil" required>
+                            <div
+                                *ngIf="carForm.controls['carOil'].invalid && (carForm.controls['carOil'].dirty || carForm.controls['carOil'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกชื่อน้ำมัน</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label" style="line-height: 2.2;">ปี พ.ศ.
+                            รถยนต์</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" value="" formControlName="carYear" required>
+                            <div
+                                *ngIf="carForm.controls['carYear'].invalid && (carForm.controls['carYear'].dirty || carForm.controls['carYear'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกปี พ.ศ. รถยนต์</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-lg-5 col-form-label form-control-label"></label>
+                        <div class="text-center">
+                            <button class="btn btn-success" style="margin-right: 10px; width: 100px;"> บันทึก </button>
+                            <button class="btn btn-primry" style="width: 100px;" (click)="goBack()">ย้อนกลับ</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="form-group row" style="margin-top: 25px;" *ngIf="carId != 'null'">
+                    <hr class="my-1" style="margin-top: 10pxpx;">
+                    <label class="col-lg-3 col-form-label form-control-label"
+                        style="line-height: 2.2;">อัพโหลดรูปภาพ</label>
+
+                    <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                        <input type="file" #fileInput id="imageBase64" class="file-upload"
+                            (change)="onFileSelected($event)">
+                    </div>
+                    <div class="col-lg-2 col-form-label form-control-label">
+                        <button class="btn btn-success" style="width: 100px;" (click)="onUploadImg()"> เพิ่ม </button>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-lg-3 col-form-label form-control-label text-center"></div>
+
+                    <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                        <img [src]="imageBase64" style="width: 300px;" class="rounded" />
+                    </div>
+                </div>
+
+                <div class="form">
+                    <div class="form-group row" *ngFor="let item of imageBase64s ;  let i = index">
+                        <hr class="my-1" style="margin-top: 10pxpx;">
+                        <div class="col-lg-3 col-form-label form-control-label text-center"></div>
+
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <img [src]="item.carImage" style="width: 300px;" class="rounded" />
+                        </div>
+
+                        <div class="col-lg-2 col-form-label form-control-label">
+                            <button class="btn btn-danger" style="width: 100px;"
+                                (click)="onDeleteImg(item.carImageId)">ลบ</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- /form user info -->
+
+    </div>
+    <ng-template #customLoadingTemplate>
+    </ng-template>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+        [template]="customLoadingTemplate"></ngx-loading>
+</section>

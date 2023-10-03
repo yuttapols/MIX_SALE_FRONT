@@ -1,0 +1,88 @@
+<section>
+    <div class="col-md-7 offset-md-3">
+        <span class="anchor" id="formUserEdit"></span>
+
+        <!-- form user info -->
+        <div class="card card-outline-secondary " style="margin-top: 50px;">
+            <div class="card-header" style="text-align: center;">
+                <h3 class="mb-0">จัดการข้อมูลธนาคาร</h3>
+            </div>
+            <div class="card-body">
+                <form class="form" role="form" [formGroup]="bkForm" (ngSubmit)=" onSubmit()">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label "
+                            style="line-height: 2.2;">ชื่อธนาคาร</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" value="" formControlName="bankNmae" required>
+                            <div
+                                *ngIf="bkForm.controls['bankNmae'].invalid && (bkForm.controls['bankNmae'].dirty || bkForm.controls['bankNmae'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกชื่อธนาคาร</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">เลขบัญชี</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" formControlName="bkAccountNumber" required>
+                            <div
+                                *ngIf="bkForm.controls['bkAccountNumber'].invalid && (bkForm.controls['bkAccountNumber'].dirty || bkForm.controls['bkAccountNumber'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกเลขบัญชี</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">ชื่อเจ้าของบัญชี</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" formControlName="name" required>
+                            <div
+                                *ngIf="bkForm.controls['name'].invalid && (bkForm.controls['name'].dirty || bkForm.controls['name'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกชื่อเจ้าของบัญชี</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">อัพโหลดรูปภาพ</label>
+
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input type="file" class="file-upload" (change)="onFileSelected($event)">
+                            <div
+                                *ngIf="isQrCode">
+                                <p class="text-danger">กรุณาเพิ่มรูปภาพ</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-lg-3 col-form-label form-control-label text-center"></div>
+
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <img [src]="imageBase64" style="width: 200px;" class="rounded" />
+                        </div>
+                    </div>
+                    <!--<div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label" style="line-height: 2.2;"></label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;" >
+                            <input class="form-control" type="text" value="">
+                        </div>
+                    </div> -->
+                    <div class="form-group row">
+                        <label class="col-lg-5 col-form-label form-control-label"></label>
+                        <div class="text-center">
+                            <button class="btn btn-success" style="margin-right: 10px; width: 100px;">บันทึก</button>
+                            <input class="btn btn-danger" style="width: 100px;" (click)="goBack()" value="ย้อนกลับ">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /form user info -->
+
+    </div>
+    <ng-template #customLoadingTemplate>
+    </ng-template>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+        [template]="customLoadingTemplate"></ngx-loading>
+</section>

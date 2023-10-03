@@ -1,0 +1,150 @@
+<section>
+    <div class="col-md-7 offset-md-3">
+        <span class="anchor" id="formUserEdit"></span>
+
+        <!-- form user info -->
+        <div class="card card-outline-secondary " style="margin-top: 30px;">
+            <div class="card-header" style="text-align: center; background-color:  #ffcc80">
+                <h3 class="mb-0">ข้อมูลส่วนตัว</h3>
+            </div>
+            <div class="card-body">
+                <form class="form" role="form" [formGroup]="userInFoForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label "
+                            style="line-height: 2.2;">บัญชีผู้ใช้</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" value="{{userName}}" disabled>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label" style="line-height: 2.2;">ชื่อ</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" formControlName="fristName" required>
+                            <div
+                                *ngIf="userInFoForm.controls['fristName'].invalid && (userInFoForm.controls['fristName'].dirty || userInFoForm.controls['fristName'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกชื่อ</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">นามสกุล</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" formControlName="lastName" required>
+                            <div
+                                *ngIf="userInFoForm.controls['lastName'].invalid && (userInFoForm.controls['lastName'].dirty || userInFoForm.controls['lastName'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกนามสกุล</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">อีเมล</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="email" formControlName="userEmail" required>
+                            <div
+                                *ngIf="userInFoForm.controls['userEmail'].invalid && (userInFoForm.controls['userEmail'].dirty || userInFoForm.controls['userEmail'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอก E-mail</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">เบอร์โทร</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" formControlName="userPhone" required>
+                            <div
+                                *ngIf="userInFoForm.controls['userPhone'].invalid && (userInFoForm.controls['userPhone'].dirty || userInFoForm.controls['userPhone'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกเบอร์โทร</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">ที่อยู่</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" formControlName="userAddress" required>
+                            <div
+                                *ngIf="userInFoForm.controls['userAddress'].invalid && (userInFoForm.controls['userAddress'].dirty || userInFoForm.controls['userAddress'].touched || isSubmit)">
+                                <p class="text-danger">กรุณากรอกที่อยู่</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">จังหวัด</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <select class="form-control" formControlName="provinceId" (change)="onChangeProvinces()" required>
+                                <option *ngFor="let item of provinces" value="{{item.id}}">{{item.nameTh}}
+                                </option>
+                                <div
+                                    *ngIf="userInFoForm.controls['provinceId'].invalid && (userInFoForm.controls['provinceId'].dirty || userInFoForm.controls['provinceId'].touched || isSubmit)">
+                                    <p class="text-danger">กรุณากรอกจังหวัด</p>
+                                </div>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">แขวง/อำเภอ</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <select class="form-control" formControlName="amphureId" (change)="onChangeAmphures()" required>
+                                <option value="" selected>เขต/อำเภอ</option>
+                                <option *ngFor="let item of amphures" [ngValue]="item.id">{{item.nameTh}}
+                                </option>
+                                <div
+                                    *ngIf="userInFoForm.controls['amphureId'].invalid && (userInFoForm.controls['amphureId'].dirty || userInFoForm.controls['amphureId'].touched || isSubmit)">
+                                    <p class="text-danger">กรุณากรอกอำเภอ</p>
+                                </div>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">เขต/ตำบล</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <select class="form-control" formControlName="tambonsId" (change)="onChangeTombons()" required>
+                                <option value="" selected>แขวง/ตำบล</option>
+                                <option *ngFor="let item of tambons" [ngValue]="item.id">{{item.nameTh}}
+                                </option>
+                                <div
+                                    *ngIf="userInFoForm.controls['tambonsId'].invalid && (userInFoForm.controls['tambonsId'].dirty || userInFoForm.controls['tambonsId'].touched || isSubmit)">
+                                    <p class="text-danger">กรุณากรอกตำบล</p>
+                                </div>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label"
+                            style="line-height: 2.2;">รหัสไปรษณีย์</label>
+                        <div class="col-lg-7 col-form-label form-control-label " style="line-height: 2.2;">
+                            <input class="form-control" type="text" formControlName="zipCode">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-5 col-form-label form-control-label"></label>
+                        <div class="text-center">
+                            <button class="btn btn-success" style="width: 100px; margin-right: 10px;">บันทึก</button>
+                            <button class="btn btn-danger" style="width: 100px;" (click)=" goBack()">ย้อนกลับ</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- /form user info -->
+
+    </div>
+    <ng-template #customLoadingTemplate>
+    </ng-template>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+        [template]="customLoadingTemplate"></ngx-loading>
+</section>

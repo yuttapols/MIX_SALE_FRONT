@@ -1,0 +1,153 @@
+<nav class="navbar navbar-expand-xl navbar-light " style="background-color:#e0e0e0">
+  <div class="container-fluid">
+    <div class="navbar-brand" href="#" style="margin-left: 40px;">
+      <img src="assets/img/logo-9.png" style="width: 90px;" alt="logo">
+
+    </div>
+    <div>
+      <h3 style="margin-left: 17px;">ระบบสั่งจองรถยนต์มือสองออนไลน์</h3>
+      <h5 style="margin-left: 17px; margin-top: -7px;">Online Used Car Booking System</h5>
+      <!-- <p>ระบบสั่งจองรถยนต์มือสอง</p> -->
+    </div>
+    <!-- <a class="navbar-brand" href="#">
+        <h1>Booking Car</h1>
+      </a> -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div *ngIf="role == '' " class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link active" href="#">หน้าหลัก</a>
+        </li> -->
+      </ul>
+
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex fw-bolder" style="margin-right: 35px; font-size: 18px;">
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="homepage">หน้าหลัก</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="register">สมัครสมาชิก</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="login">เข้าสู่ระบบ</a>
+        </li>
+
+      </ul>
+    </div>
+
+
+
+    <div *ngIf="role == 'user' " class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+            <a class="nav-link " aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+      </ul>
+
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex fw-bolder" style="margin-right: 10px; font-size: 18px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="homepage">หน้าแรก</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="reservedetail">รายละเอียดการจอง</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            บัญชี
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" routerLink="userinfo">ข้อมูลส่วนตัว</a></li>
+            <li><a class="dropdown-item" routerLink="changepassword">เปลี่ยนรหัสผ่าน</a></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" (click)="logOut()">ออกจากระบบ</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+
+
+    <div *ngIf="role == 'admin' " class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li> -->
+      </ul>
+
+      <ul class="navbar-nav mb-2 mb-lg-0 d-flex fw-bolder" style="font-size: 18px;">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="homepageaddmin">หน้าแรก</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="userdetail">ข้อมูลสมาชิก</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="car">ข้อมูลรถยนต์</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="bank">ข้อมูลธนาคาร</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="approvebooking">อนุมัติการจอง</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="bookinginformation">ข้อมูลการจอง</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" routerLink="report">รายงานผล</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" (click)="logOut()">ออกจากระบบ</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li> -->
+      </ul>
+    </div>
+
+  </div>
+
+</nav>
+
+<div class="container">
+
+  <router-outlet></router-outlet>
+</div>
+<div class="container" style="height: 5vh;">
+
+</div>
+
+<!-- <footer id="sticky-footer" class="flex-shrink-0 py-4 bg-dark text-white-50" >
+  <div class="container text-center">
+    <small>www.Servicecar.com</small>
+  </div>
+</footer> -->
+
+<footer class="text-center text-lg-start bg-light text-muted">
+  <div class="text-center p-2" style="background-color: rgba(0, 0, 0, 0.05);">
+    <pre style="font-size: 18px;">ผู้พัฒนาระบบ : นายธีรพงษ์  เต็มปักศรี</pre>
+    <pre
+      style="font-size: 15px;">ติดต่อ : 099-1863072  E-mail : theerapong.tt2544@gmail.com  Facebook : theeraphong tempaksri</pre>
+  </div>
+</footer>

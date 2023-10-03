@@ -1,0 +1,64 @@
+<div class="nav-item dropdown" style="margin-top: 15px;" class="text-center">
+
+  <button class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+    aria-expanded="false" class="btn btn-danger" style="width: 300px; font-size: 24px;">
+    เลือกยี่ห้อรถยนต์
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="width: 300px;">
+    <li (click)="selectBrand('')"><a class="dropdown-item">ทั้งหมด</a></li>
+    <li *ngFor="let item of carBrands ;  let i = index" (click)="selectBrand(item)"><a a
+        class="dropdown-item">{{item}}</a></li>
+  </ul>
+  <!-- <select class="form-select" aria-label="Default select example">
+    <option selected>เลือกยี่ห้อรถยนต์</option>
+    <option *ngFor="let item of carBrands ;  let i = index" (change)="selectBrand(item)">{{item}}</option>
+  </select> -->
+</div>
+
+<div class="row">
+  <div class="col-md-3" *ngFor="let item of data ;  let i = index">
+    <div class="card "
+      style="background-color: rgb(240, 240, 240); margin-top: 30px;  width: 20rem;  height: 30rem;">
+      <div style="text-align: center; margin-top: 10px;">
+        <img   [src]="item.images[0].carImage" class="rounded" alt="Cinque Terre" width="300" height="230">
+      </div>
+      <!-- <span class="material-icons" style="text-align: center; font-size: 140px;">groups</span> -->
+      <div class="form-group row" style="margin-top: 10px;">
+        <tr>
+          <td>
+            <label style="font-size: 19px; margin-left: 8px;">ยี่ห้อ : {{item.carBrand}}</label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label style="font-size: 19px; margin-left: 8px;">รุ่น : {{item.carModel}}</label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label style="font-size: 19px; margin-left: 8px;">ปี พ.ศ. : {{item.carYear}}</label>
+          </td>
+        </tr>
+        <div>
+          <tr>
+            <td>
+              <label style="text-align: center; font-size: 24px; margin-left: 82px;  margin-top: 15px; color: red;">ราคา :
+                {{item.carPrice}}</label>
+            </td>
+          </tr>
+        </div>
+      </div>
+      <div style="text-align: center; margin-top: 18px;">
+        <button class="btn btn-success" style="width: 150px;" (click)="gotoCarDetail(item)">รายละเอียดรถยนต์</button>
+      </div>
+    </div>
+  </div>
+  <div>
+
+    
+  </div>
+  <ng-template #customLoadingTemplate>
+  </ng-template>
+  <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+      [template]="customLoadingTemplate"></ngx-loading>
+</div>

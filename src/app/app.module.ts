@@ -3,57 +3,83 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TestComponent } from './test/test.component';
-import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
-import { RegComponent } from './reg/reg.component';
-import { CarService } from './services/car.service';
-import {HttpClientModule} from '@angular/common/http';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DeptListComponent } from './test/dept-list/dept-list.component';
-import { DeptDetailComponent } from './test/dept-detail/dept-detail.component';
-import { EmpComponent } from './test/emp/emp.component'
-import { RegService } from './services/reg.service';
-import { UserService } from './services/user.service';
-import { AuthService } from './services/auth.service';
-import { SuccessComponent } from './login/success/success.component';
-import { AuthGuard } from './login/auth.guard';
-import { HomeComponent } from './home/home.component';
-import { ProfileComponent } from './login/profile/profile.component';
-import { OverviewComponent } from './test/dept-detail/overview/overview.component';
-import { ContactsComponent } from './test/dept-detail/contacts/contacts.component';
-import {DisableDragDropDirective} from './directives/disable-drag-drop.directive';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarComponent } from './modules/car/car.component';
+import { UserComponent } from './modules/user/user.component';
+import { LoginComponent } from './modules/login/login.component';
+import { RegisterComponent } from './modules/register/register.component';
+import { ResetpasswordComponent } from './modules/resetpassword/resetpassword.component';
+import { UserinfoComponent } from './modules/userinfo/userinfo.component';
+import { ChangepasswordComponent } from './modules/changepassword/changepassword.component';
+import { HompageComponent } from './modules/hompage/hompage.component';
+import { ReservedetailComponent } from './modules/reservedetail/reservedetail.component';
+import { HomepageaddminComponent } from './modules/homepageaddmin/homepageaddmin.component';
+import { ApprovebookingComponent } from './modules/approvebooking/approvebooking.component';
+import { UserdetailComponent } from './modules/userdetail/userdetail.component';
+import { ReportComponent } from './modules/report/report.component';
+import { BankComponent } from './modules/bank/bank.component';
+import { CarmanagementComponent } from './modules/carmanagement/carmanagement.component';
+import { BankmanagementComponent } from './modules/bankmanagement/bankmanagement.component';
+import { ApprovebookingmanagementComponent } from './modules/approvebookingmanagement/approvebookingmanagement.component';
+// import { EnvironmentsComponent } from './environments/environments.component';
+import { NgxPermissionsModule } from 'ngx-permissions';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardetailComponent } from './modules/cardetail/cardetail.component';
+import { PaymentComponent } from './modules/payment/payment.component';
+
+import { MainpageComponent } from './modules/mainpage/mainpage.component';
+import { SlippaymentComponent } from './modules/slippayment/slippayment.component';
+import { ReportgenexcelComponent } from './modules/reportgenexcel/reportgenexcel.component';
+import { CheckinformationComponent } from './modules/checkinformation/checkinformation.component';
+import { BookinginformationComponent } from './modules/bookinginformation/bookinginformation.component';
+import { NgxLoadingModule } from "ngx-loading";
 
 @NgModule({
   declarations: [
     AppComponent,
-    TestComponent,
+    CarComponent,
+    UserComponent,
     LoginComponent,
-    RegComponent,
-    PageNotFoundComponent,
-    DeptListComponent,
-    DeptDetailComponent,
-    EmpComponent,
-    SuccessComponent,
-    HomeComponent,
-    ProfileComponent,
-    OverviewComponent,
-    ContactsComponent,
-    DisableDragDropDirective
+    RegisterComponent,
+    ResetpasswordComponent,
+    UserinfoComponent,
+    ChangepasswordComponent,
+    HompageComponent,
+    ReservedetailComponent,
+    HomepageaddminComponent,
+    ApprovebookingComponent,
+    UserdetailComponent,
+    ReportComponent,
+    BankComponent,
+    CarmanagementComponent,
+    BankmanagementComponent,
+    ApprovebookingmanagementComponent,
+    CardetailComponent,
+ 
+    PaymentComponent,
+    MainpageComponent,
+    SlippaymentComponent,
+    ReportgenexcelComponent,
+    CheckinformationComponent,
+    BookinginformationComponent
+
+
+
   ],
   imports: [
     BrowserModule,
+    NgbModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    HttpClientModule,
+    NgxPermissionsModule.forRoot(),
     ReactiveFormsModule,
-    HttpClientModule
+    NgxLoadingModule.forRoot({})
   ],
-  providers: [
-    CarService,
-    RegService,
-    UserService,
-    AuthService,
-    AuthGuard
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

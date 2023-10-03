@@ -1,0 +1,164 @@
+<div style="margin-left: 60px;">
+  <!-- Instagram -->
+  <!-- <button type="button" class="btn btn-primary position-relative" data-mdb-ripple-unbound="true"
+    style="background-color: #ac2bac;">
+    <i class="fab fa-instagram"></i>
+    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">+99 <span
+        class="visually-hidden">unread messages</span></span>
+  </button> -->
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card " style="background-color: rgb(240, 240, 240); margin-top: 50px; width: 20rem; height: 17rem;">
+        <div *ngIf="countUser != 0">
+          <div class="badge badge-main">
+            <span class=" badge-light badge-mes">{{countUser}}</span>
+          </div>
+        </div>
+        
+        <h3 style="text-align: center; margin-top: 10px;">ข้อมูลสมาชิก</h3>
+        <!-- <img src="..." class="card-img-top" alt="..."> --> 
+        <span class="material-icons" style="text-align: center; font-size: 140px;">groups</span>
+        <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+          <button class="btn btn-success" style="width: 130px;" (click)="gotoUserdetail()">ดูข้อมูลสมาชิก</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card"
+        style="background-color: rgb(240, 240, 240); margin-top: 50px; margin-right: 50px; width: 20rem; height: 17rem;">
+        <h3 style="text-align: center; margin-top: 10px;">ข้อมูลรถยนต์</h3>
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <span class="material-icons" style="text-align: center; font-size: 140px;">commute</span>
+        <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+          <a href="#" class="btn btn-success" style="width: 130px;" routerLink="../car">ดูข้อมูลรถยนต์</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card"
+        style="background-color: rgb(240, 240, 240); margin-top: 50px; margin-right: 50px; width: 20rem; height: 17rem;">
+        <h3 style="text-align: center; margin-top: 10px;">ข้อมูลธนาคาร</h3>
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <span class="material-icons" style="text-align: center; font-size: 140px;">account_balance</span>
+        <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+          <a href="#" class="btn btn-success" style="width: 130px;" routerLink="../bank">ดูข้อมูลธนาคาร</a>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card" style="background-color: rgb(240, 240, 240); margin-top: 80px; width: 20rem; height: 17rem;">
+        <div *ngIf="countApprove != 0">
+          <div class="badge badge-main">
+            <span class=" badge-light badge-mes">{{countApprove}}</span>
+          </div>
+        </div>
+        <h3 style="text-align: center; margin-top: 10px;">อนุมัติการจอง</h3>
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <span class="material-icons" style="text-align:center; font-size: 140px;">check_circle</span>
+        <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+          <input type="button" class="btn btn-success" style="width: 130px;" (click)="gotoApprove()" value="อนุมัติการจอง">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card" style="background-color: rgb(240, 240, 240); margin-top: 80px; width: 20rem; height: 17rem;">
+        <h3 style="text-align: center; margin-top: 10px;">ข้อมูลการจอง</h3>
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <span class="material-icons" style="text-align:center; font-size: 140px;">summarize</span>
+        <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+          <a class="btn btn-success" style="width: 130px;" routerLink="../bookinginformation">ดูข้อมูลการจอง</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card"
+        style="background-color: rgb(240, 240, 240); margin-top: 80px; margin-right: 50px; width: 20rem; height: 17rem;">
+        <h3 style="text-align: center; margin-top: 10px;">รายงานผล</h3>
+        <!-- <img src="..." class="card-img-top" alt="..."> -->
+        <span class="material-icons" style="text-align: center; font-size: 140px;">fact_check</span>
+        <div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+          <a href="#" class="btn btn-success" style="width: 130px;" routerLink="../report">รายงาน</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="card" aria-hidden="true">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title placeholder-glow">
+        <span class="placeholder col-6"></span>
+      </h5>
+      <p class="card-text placeholder-glow">
+        <span class="placeholder col-7"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-4"></span>
+        <span class="placeholder col-6"></span>
+        <span class="placeholder col-8"></span>
+      </p>
+      <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+    </div>
+  </div> -->

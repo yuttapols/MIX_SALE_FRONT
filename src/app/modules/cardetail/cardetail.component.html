@@ -1,0 +1,101 @@
+<div class="container-fluid h-custom" style="margin-top: 90px">
+    <div class="row d-flex justify-content-center align-items-center h-100" style="margin-top: 100px;">
+        <div class="row d-flex  " style="width: 65rem; height: 33rem; background-color:  rgb(242, 242, 242);">
+
+            <div class="col-md-6" style="margin-top: 12px;">
+                <div>
+
+                    <ngb-carousel *ngIf="data != null">
+                        <ng-template ngbSlide *ngFor="let item of data.images ;  let i = index">
+                            <!-- <div class="text-center">
+                                    <img src="..." class="rounded" alt="...">
+                                </div> -->
+                            <div class="text-center" style="margin-top: 45px; margin-right: 20px;">
+                                <img style="width: 500px; height: 420px;" [src]="item.carImage"
+                                    alt="Random first slide" />
+                            </div>
+                        </ng-template>
+                    </ngb-carousel>
+
+                </div>
+            </div>
+            <div class="col-md-6">
+                <form style="margin-right: 0px; margin-top: 40px;">
+                    <p style="text-align: center;"> <strong style="font-size: 24px;">ข้อมูลรถยนต์</strong></p>
+
+
+                    <div class="form-group row" style="margin-top: 45px;">
+
+                        <div class="form-group row" style="margin-top: 15px;">
+                            <label class="col-lg-4" style=" text-align: right;">ยี่ห้อ : </label>
+                            <div class="col-lg-4">
+                                <label *ngIf="data != null">{{data.carBrand}} </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-top: 15px;">
+                            <label class="col-lg-4" style=" text-align: right;">รุ่น :</label>
+                            <div class="col-lg-8">
+                                <label *ngIf="data != null"> {{data.carModel}}</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-top: 15px;">
+                            <label class="col-lg-4" style=" text-align: right;">ราคา : </label>
+                            <div class="col-lg-4">
+                                <label *ngIf="data != null">{{data.carPrice}}</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-top: 15px;">
+                            <label class="col-lg-4" style=" text-align: right;">เกียร์ : </label>
+                            <div class="col-lg-4">
+                                <label *ngIf="data != null">{{data.carGear}}</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-top: 15px;">
+                            <label class="col-lg-4" style=" text-align: right;">ระยะทาง :</label>
+                            <div class="col-lg-4">
+                                <label *ngIf="data != null"> {{data.carMiles}}</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-top: 15px;">
+                            <label class="col-lg-4" style=" text-align: right;">น้ำมัน : </label>
+                            <div class="col-lg-4">
+                                <label *ngIf="data != null">{{data.carOil}}</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-top: 15px;">
+                            <label class="col-lg-4" style=" text-align: right;">ปี พ.ศ. : </label>
+                            <div class="col-lg-4">
+                                <label *ngIf="data != null">{{data.carYear}}</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group row" style="margin-top: 72px;">
+
+                        <div class="text-center" style="margin-bottom: 24px;">
+                            <input *ngIf="isLogin == true" class="col-lg-3" type="button" class="btn btn-success"
+                                style="margin-right: 10px; width: 100px;" (click)="goCheckinformation(data)"
+                                value="สั่งจอง">
+                            <input *ngIf="isLogin == true" class="col-lg-3" type="button" class="btn btn-danger"
+                                style="width: 100px;" (click)="goBack()" value="ย้อนกลับ">
+                            <input *ngIf="isLogin == false" class="col-lg-3" type="button" class="btn btn-success"
+                                style="width: 100px;" (click)="onLogin()" value="สั่งจอง">
+                        </div>
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #customLoadingTemplate>
+</ng-template>
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+    [template]="customLoadingTemplate"></ngx-loading>

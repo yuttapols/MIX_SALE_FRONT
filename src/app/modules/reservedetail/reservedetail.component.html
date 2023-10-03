@@ -1,0 +1,44 @@
+<div style="margin-top: 10;">
+    <h1 style="text-align: center;  margin-top: 15px;">รายละเอียดการจอง</h1>
+    <table class="table table-striped table-hover" style="margin-top: 20px;">
+        <thead>
+            <tr style="background-color:  #ffcc80">
+                <th scope="col" style="text-align: center;">ลำดับ</th>
+                <th scope="col">ชื่อ - นามสกุล</th>
+                <th scope="col">แบร์น</th>
+                <th scope="col">รุ่น</th>
+                <th scope="col">ราคา</th>
+                <th scope="col">เริ่มต้นการจอง</th>
+                <th scope="col">หมดอายุการจอง</th>
+                <th scope="col">สถานะ</th>
+                <th scope="col">รายการ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item  of listReserveDetail; let i = index">
+                <!-- <tr *ngFor="let country of countries"> -->
+                <th style="text-align: center;">{{i+1}}</th>
+                <td>{{item.fullName}}</td>
+                <td>{{item.carResponseModel.carBrand}}</td>
+                <td>{{item.carResponseModel.carModel}}</td>
+                <td>{{item.carResponseModel.carPrice}}</td>
+                <td>{{item.bookStartDateStr}}</td>
+                <td>{{item.bookEndDateStr}}</td>
+                <td>{{item.recordStatusReception}}</td>
+                <td>
+                    <!-- <a *ngIf="item.recordStatus == 4" (click)="goPayment(item.carId,item.reserveId)"
+                        > <mark style="background-color: rgb(252, 0, 0);" class="text-light">กรุณาแนบสลิปใหม่</mark></a> -->
+                        <button class="btn btn-danger" *ngIf="item.recordStatus == 4" (click)="goPayment(item.carId,item.reserveId)">กรุณาแนบสลิปใหม่</button>
+                    <!-- 
+                        <p class="small fw-bold mt-2 pt-1 mb-0"><a routerLink="../register"
+                            class="link-danger">สมัครสมาชิก</a></p> -->
+                </td>
+              
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #customLoadingTemplate>
+    </ng-template>
+    <ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px' }"
+        [template]="customLoadingTemplate"></ngx-loading>
+</div>
