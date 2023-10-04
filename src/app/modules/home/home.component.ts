@@ -11,15 +11,5 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
   ngOnInit() {
 
-    const userRole = sessionStorage.getItem('user_role');
-    if (null != userRole && userRole == "admin") {
-      this.router.navigate(['home/homepageaddmin'])
-
-    } else {
-      this.router.navigate(['home/homepage'])
-    }
   }
-
-
-
 }
